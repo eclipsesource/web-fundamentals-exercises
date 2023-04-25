@@ -40,19 +40,20 @@ class Data {
       },
       null,
     ];
+    this.getNumericValue = this.getNumericValue.bind(this);
   }
 
   hasId(entry) {
-    return typeof entry === "object" && entry.id;
+    return entry && typeof entry === "object" && "id" in entry;
   }
 
   isNumeric(value) {
-    return typeof value === number;
+    return typeof value === 'number';
   }
 
   getNumericValue(id) {
     const entry = _.findLast(this.parsedData, (entry) => {
-      return this.hasId(entry) && this.isNumeric(entry.value) && entry.id == id;
+      return this.hasId(entry) && this.isNumeric(entry.value) && entry.id === id;
     });
     if (entry) {
       return entry.value;

@@ -5,6 +5,23 @@
 
     <!-- Example script to show some fun things. However these typically don't occur in practice -->
     <script>
+      "use strict";
+      // Bonus: "use strict"; should always be used in Javascript files to disallow some old Javascript quirks,
+      //   like assigning to global variables when no keyword like 'var', 'let' etc. is used
+      // It's automatically applied in type="module" scripts
+      const obj = {
+        i: 10,
+        b: () => console.log(this.i, this),
+        c() {
+          console.log(this.i, this);
+        },
+      };
+      class C {
+        a = 1;
+        autoBoundMethod = () => {
+          console.log(this.a);
+        };
+      }
       if (1 == "1") {
         console.log("1 == '1'");
         // We always use triple === to avoid these kind of issues
@@ -16,14 +33,14 @@
         console.log("var is available after block scope: " + i);
         // var is not necessary anymore. We only use 'let' and 'const'
 
-        number = 0 + "";
+        var number = 0 + "";
         console.log(`0 + "" === ${number}`);
         // Typescript makes it easy to spot such occurrences.
         // In general string concatenation is rarely used anymore in favor of template strings.
 
-        return
+        return;
         {
-          foo: 3
+          foo: 3;
         }
         // Semicolons can be omitted which can have unexpected consequences, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#automatic_semicolon_insertion
         // We avoid this in practice using formatters like prettier which make all semicolons visible
@@ -34,25 +51,32 @@
       );
     </script>
 
-    <!-- Task 2: Make lodash globally available -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
+      integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 
-    <!-- Task 3: Fix the content of 'script.js' to achieve the desired result -->
     <script type="module">
       import { add } from "./script.js";
-      document.getElementById("result").innerHTML =
-        "The result is " + add(0, "x10", "foo", "foobar") + ". It should be 42";
+      document.getElementById("result").textContent =
+        // Bonus: use textContent to avoid security issues
+        `The result is ${add(0, "x10", "foo", "foobar")}. It should be 42`;
     </script>
-
-    <!-- Task 1: Fix the following script which is intended to show an error when lodash is not available -->
-    <script>
-      if (!"_" in window) {
-        document.getElementById("lodash-error").innerHTML =
-          "Lodash is not available. Try again later";
-      }
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   </head>
   <body>
     <p id="result"></p>
     <p style="color: red" id="lodash-error"></p>
   </body>
+  <!-- Script must be placed after the "lodash-error" element as otherwise it's not yet available -->
+  <script>
+    // parentheses are needed as ! takes precedence, converting !"_" to true.
+    if (!("_" in window)) {
+      document.getElementById("lodash-error").textContent = // Bonus: use textContent to avoid security issues
+        "Lodash is not available. Try again later";
+    }
+  </script>
+  <!-- "module" scripts are executed by default only after all parsing is finished. This is why we don't need to move them down -->
 </html>
