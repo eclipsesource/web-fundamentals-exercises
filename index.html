@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercise 1</title>
+
+    <!-- Example script to show some fun things. However these typically don't occur in practice -->
+    <script>
+      if (1 == "1") {
+        console.log("1 == '1'");
+        // We always use triple === to avoid these kind of issues
+      }
+      function test() {
+        for (var i = 0; i < 10; i++) {
+          console.log(i);
+        }
+        console.log("var is available after block scope: " + i);
+        // var is not necessary anymore. We only use 'let' and 'const'
+
+        number = 0 + "";
+        console.log(`0 + "" === ${number}`);
+        // Typescript makes it easy to spot such occurrences.
+        // In general string concatenation is rarely used anymore in favor of template strings.
+
+        return
+        {
+          foo: 3
+        }
+        // Semicolons can be omitted which can have unexpected consequences, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#automatic_semicolon_insertion
+        // We avoid this in practice using formatters like prettier which make all semicolons visible
+        // Here you can see it somewhat because of the syntax highlighting.
+      }
+      console.log(
+        `Result of test() is ${test()} because of an automatically appended semicolon after return`
+      );
+    </script>
+
+    <!-- Task 2: Make lodash globally available -->
+
+    <!-- Task 3: Fix the content of 'script.js' to achieve the desired result -->
+    <script type="module">
+      import { add } from "./script.js";
+      document.getElementById("result").innerHTML =
+        "The result is " + add(0, "x10", "foo", "foobar") + ". It should be 42";
+    </script>
+
+    <!-- Task 1: Fix the following script which is intended to show an error when lodash is not available -->
+    <script>
+      if (!"_" in window) {
+        document.getElementById("lodash-error").innerHTML =
+          "Lodash is not available. Try again later";
+      }
+    </script>
+  </head>
+  <body>
+    <p id="result"></p>
+    <p style="color: red" id="lodash-error"></p>
+  </body>
+</html>
