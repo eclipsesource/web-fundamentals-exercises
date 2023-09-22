@@ -1,6 +1,6 @@
-const _ = require('lodash');
-const { hasId } = require('has-id')
-const { isNumeric } = require('is-numeric')
+const _ = require("lodash");
+const { hasId } = require("has-id");
+const { isNumeric } = require("is-numeric");
 
 /**
  * This class models parsed unstructured data. We are only interested in data which has
@@ -64,6 +64,4 @@ const add = (...ids) => {
   return _.sum(values);
 };
 
-module.exports = {
-    add
-}
+module.exports = add;

@@ -1,0 +1,13 @@
+{
+  "name": "add",
+  "version": "1.0.0",
+  "main": "add.js",
+  "dependencies": {
+    "has-id": "1.0.0",
+    "is-numeric": "1.0.0",
+    "lodash": "^4.17.21"
+  },
+  "scripts": {
+    "echo": "echo $npm_package_name:$npm_package_version"
+  }
+}

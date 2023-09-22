@@ -1,0 +1,8 @@
+{
+  "name": "has-id",
+  "version": "1.0.0",
+  "main": "hasId.js",
+  "scripts": {
+    "echo": "echo $npm_package_name:$npm_package_version"
+  }
+}
