@@ -1,0 +1,13 @@
+{
+  "name": "web-fundamentals",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "lerna run start --scope=app"
+  },
+  "devDependencies": {
+    "lerna": "^6.6.1"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}

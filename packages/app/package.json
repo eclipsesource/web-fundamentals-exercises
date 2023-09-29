@@ -1,0 +1,11 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node app.js",
+    "echo": "echo $npm_package_name:$npm_package_version"
+  },
+  "dependencies": {
+    "add": "1.0.0"
+  }
+}

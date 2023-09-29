@@ -1,0 +1,8 @@
+{
+  "name": "is-numeric",
+  "version": "1.0.0",
+  "main": "isNumeric.js",
+  "scripts": {
+    "echo": "echo $npm_package_name:$npm_package_version"
+  }
+}
