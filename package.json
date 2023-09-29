@@ -2,7 +2,10 @@
   "name": "web-fundamentals",
   "version": "1.0.0",
   "scripts": {
-    "start": "lerna run start --scope=app"
+    "prepare": "npm run compile",
+    "build": "lerna run build",
+    "start": "lerna run start --scope=app",
+    "compile": "lerna run compile"
   },
   "devDependencies": {
     "lerna": "^6.6.1"

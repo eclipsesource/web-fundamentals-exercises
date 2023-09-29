@@ -1,8 +1,10 @@
 {
   "name": "has-id",
   "version": "1.0.0",
-  "main": "hasId.js",
+  "main": "lib/hasId.js",
+  "typings": "lib/hasId.d.ts",
   "scripts": {
-    "echo": "echo $npm_package_name:$npm_package_version"
+    "echo": "echo $npm_package_name:$npm_package_version",
+    "compile": "tsc"
   }
 }

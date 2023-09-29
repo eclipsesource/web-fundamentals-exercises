@@ -1,4 +1,5 @@
-import _ from 'lodash';
+import findLast from 'lodash/findLast';
+import sum from 'lodash/sum';
 import { hasId } from 'has-id';
 import { isNumeric } from 'is-numeric';
 
@@ -46,8 +47,8 @@ class Data {
     this.getNumericValue = this.getNumericValue.bind(this);
   }
 
-  getNumericValue(id) {
-    const entry = _.findLast(this.parsedData, (entry) => {
+  getNumericValue(id: unknown) {
+    const entry = findLast(this.parsedData, (entry) => {
       return hasId(entry) && isNumeric(entry.value) && entry.id === id;
     });
     if (entry) {
@@ -57,12 +58,12 @@ class Data {
   }
 }
 
-const add = (...ids) => {
+const add = (...ids: unknown[]) => {
   const data = new Data();
   const values = ids
     .map(data.getNumericValue)
     .filter((value) => value !== undefined);
-  return _.sum(values);
+  return sum(values);
 };
 
 export default add;

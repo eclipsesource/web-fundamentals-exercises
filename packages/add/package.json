@@ -1,13 +1,18 @@
 {
   "name": "add",
   "version": "1.0.0",
-  "main": "add.js",
+  "main": "lib/add.js",
+  "typings": "lib/add.d.ts",
   "dependencies": {
     "has-id": "1.0.0",
     "is-numeric": "1.0.0",
     "lodash": "^4.17.21"
   },
+  "devDependencies": {
+    "@types/lodash": "^4.14.194"
+  },
   "scripts": {
-    "echo": "echo $npm_package_name:$npm_package_version"
+    "echo": "echo $npm_package_name:$npm_package_version",
+    "compile": "tsc"
   }
 }
